@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 15:26:57 by ajung             #+#    #+#             */
-/*   Updated: 2021/12/01 23:08:26 by ajung            ###   ########.fr       */
+/*   Updated: 2021/12/01 23:24:48 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*get_next_line(int fd)
 	{
 		i = 0;
 		read(fd, buffer, BUFFER_SIZE); // ssize_t read(int fd, void *buf, size_t nbyte);
-		buffer[BUFFER_SIZE] = '\0';
+		buffer[BUFFER_SIZE] == '\0';
 		while (buffer[i] != '\0' || buffer[i] != '\n')
 			i++;
 		if (buffer[i] == '\n')
