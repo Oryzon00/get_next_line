@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 15:26:57 by ajung             #+#    #+#             */
-/*   Updated: 2021/12/01 22:46:03 by ajung            ###   ########.fr       */
+/*   Updated: 2021/12/01 23:08:26 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,17 @@ char	*get_next_line(int fd)
 			i++;
 		if (buffer[i] == '\n')
 		{
-			output = ft_strjoin(output, buffer, i); //strnjoin??
+			output = ft_strjoin_gnl(output, buffer, i + 1); // +1 pour chooper le /n
 			return (output);
 		}
 		else if (buffer[i] == '\0')
 		{
-			output = ft_strjoin(output, buffer, i - 1); //strnjoin??
+			output = ft_strjoin_gnl(output, buffer, i);
 			return (output);
 		}
 		else
 		{
-			output = ft_strjoin(output, buffer, BUFFER_SIZE);
+			output = ft_strjoin_gnl(output, buffer, BUFFER_SIZE);
 		}
 	}
 }

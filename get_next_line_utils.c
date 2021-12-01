@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 15:25:52 by ajung             #+#    #+#             */
-/*   Updated: 2021/12/01 17:16:56 by ajung            ###   ########.fr       */
+/*   Updated: 2021/12/01 23:04:04 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin_gnl(char const *s1, char const *s2, int index)
 {
 	int		i;
 	int		j;
@@ -59,7 +59,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	while (s1[i])
 		output[j++] = s1[i++];
 	i = 0;
-	while (s2[i])
+	while (s2[i] && i < index)
 		output[j++] = s2[i++];
 	output[j] = '\0';
 	return (output);
