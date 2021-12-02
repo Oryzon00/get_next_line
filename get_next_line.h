@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 16:00:16 by ajung             #+#    #+#             */
-/*   Updated: 2021/12/01 23:31:48 by ajung            ###   ########.fr       */
+/*   Updated: 2021/12/02 17:58:31 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@
 # endif
 
 char	*get_next_line(int fd);
-char	*ft_strjoin_gnl(char *s1, char *s2, int index);
+char	*ft_strjoin_gnl(char *s1, char *s2);
 size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
+char	*ft_strdup_gnl(const char *s, int index);
 
 #endif
