@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 15:25:52 by ajung             #+#    #+#             */
-/*   Updated: 2021/12/02 17:57:57 by ajung            ###   ########.fr       */
+/*   Updated: 2021/12/02 19:44:35 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 	while (s2[i])
 		output[j++] = s2[i++];
 	output[j] = '\0';
+	free(s1);
 	return (output);
 }
 
