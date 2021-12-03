@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 15:25:52 by ajung             #+#    #+#             */
-/*   Updated: 2021/12/02 19:44:35 by ajung            ###   ########.fr       */
+/*   Updated: 2021/12/03 19:16:08 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_strjoin_gnl(char *s1, char *s2)
+char	*ft_strjoin_free_s1(char *s1, char *s2)
 {
 	int		i;
 	int		j;
@@ -66,7 +66,7 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 	return (output);
 }
 
-char	*ft_strdup_gnl(const char *s, int index)
+char	*ft_strndup_gnl(const char *s, int n)
 {
 	int		i;
 	int		len;
@@ -77,11 +77,35 @@ char	*ft_strdup_gnl(const char *s, int index)
 	copy = (char *)malloc(sizeof(char) * (len + 1));
 	if (copy == NULL)
 		return (NULL);
-	while (s[i] && i < index)
+	while (s[i] && i < n)
 	{
 		copy[i] = s[i];
 		i++;
 	}
 	copy[i] = '\0';
 	return (copy);
+}
+
+char	*ft_strjoin_free_s2(char *s1, char *s2)
+{
+	int		i;
+	int		j;
+	char	*output;
+
+	if (!s1 || !s2)
+		return (NULL);
+	i = 0;
+	j = 0;
+	output = (char *)malloc(sizeof(char)
+			* (ft_strlen(s1) + ft_strlen(s2)+ 1));
+	if (output == NULL)
+		return (NULL);
+	while (s1[i])
+		output[j++] = s1[i++];
+	i = 0;
+	while (s2[i])
+		output[j++] = s2[i++];
+	output[j] = '\0';
+	free(s2);
+	return (output);
 }
