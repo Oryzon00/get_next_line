@@ -49,10 +49,12 @@ char	*get_next_line(int fd)
 	output = ft_strndup_gnl(stock, i + 1); //+1 pour chopper \n
 	
 	//RECUPERER LE RESTE APRES \N DANS BUFFER STATIC ET LE NULL TERMINATED
+	// j = 0;
 	while (stock[i])
 	{
-		buffer[i] = stock[i];
+		buffer[i] = stock[i]; //buffer[j]
 		i++;
+		//j++; 
 	}
 	buffer[i] = '\0';
 	free(stock);
