@@ -6,13 +6,11 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 15:25:52 by ajung             #+#    #+#             */
-/*   Updated: 2021/12/03 19:16:08 by ajung            ###   ########.fr       */
+/*   Updated: 2021/12/06 19:50:45 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-
 
 char	*ft_strchr(const char *s, int c)
 {

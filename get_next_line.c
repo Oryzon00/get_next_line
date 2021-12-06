@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/03 18:08:22 by ajung             #+#    #+#             */
-/*   Updated: 2021/12/06 15:11:46 by ajung            ###   ########.fr       */
+/*   Created: 2021/12/06 18:53:51 by ajung             #+#    #+#             */
+/*   Updated: 2021/12/06 19:50:01 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,37 @@
 
 char	*get_next_line(int fd)
 {
+	static char	buffer[BUFFER_SIZE + 1] = "";
 	int			i;
 	int			j;
-	int			read_output;
-	static char buffer[BUFFER_SIZE + 1];
 	char		*output;
 	char		*stock;
 
-	//CHECK PARAMS VALABLE
 	if (BUFFER_SIZE <= 0 || fd < 0)
 		return (NULL);
-	
-	// METTRE RESTE DANS STOCK
 	if (buffer[0] != '\0')
 		stock = ft_strndup_gnl(buffer, ft_strlen(buffer));
 	else
 		stock = ft_strndup_gnl("", 1);
-	
-	// LECTURE POUR TROUVER \N
+	stock = fill_stock(stock, buffer, fd);
+	if (!stock)
+		return (NULL);
+	i = 0;
+	while (stock[i] && stock[i] != '\n')
+		i++;
+	output = ft_strndup_gnl(stock, i + (stock[i] != '\0'));
+	j = 0;
+	i += (stock[i] != '\0');
+	while (stock[i])
+		buffer[j++] = stock[i++];
+	buffer[j] = '\0';
+	return (free(stock), output);
+}
+
+char	*fill_stock(char *stock, char *buffer, int fd)
+{
+	int	read_output;
+
 	read_output = 1;
 	while (read_output && !(ft_strchr(stock, '\n')))
 	{
@@ -46,37 +59,7 @@ char	*get_next_line(int fd)
 		}
 		stock = ft_strjoin_free_s1(stock, buffer);
 	}
-	//
 	if (stock[0] == 0 && read_output == 0)
 		return (free(stock), NULL);
-	
-	// TROUVER EMPLACEMENT \N
-	i = 0;
-	while (stock[i] && stock[i] != '\n')
-		i++;
-	
-	//FAIRE LA LIGNE
-	if (stock[i] == '\0')
-	{
-		output = ft_strndup_gnl(stock, i);
-		//free(stock);
-		//return (output);
-	}
-	else
-		output = ft_strndup_gnl(stock, i + 1); //+1 pour chopper \n
-	
-	
-	//RECUPERER LE RESTE APRES \N DANS BUFFER STATIC ET LE NULL TERMINATED
-	j = 0;
-	if (stock[i])
-		i++;
-	while (stock[i])
-	{
-		buffer[j] = stock[i]; //buffer[j]
-		i++;
-		j++; 
-	}
-	buffer[j] = '\0';
-	free(stock);
-	return (output);
+	return (stock);
 }
